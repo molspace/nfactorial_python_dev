@@ -1,0 +1,120 @@
+./Library/Application Support/Microsoft/Teams/tmp/Teams_osx.pkg
+./Library/Application Support/krita/ai_diffusion/server/ComfyUI/models/controlnet/control_v11p_sd15_inpaint_fp16.safetensors
+./Library/Application Support/krita/ai_diffusion/server/ComfyUI/models/controlnet/control_lora_rank128_v11f1e_sd15_tile_fp16.safetensors
+./Library/Application Support/krita/ai_diffusion/server/venv/lib/python3.9/site-packages/mediapipe/python/_framework_bindings.cpython-39-darwin.so
+./Library/Application Support/Code/CachedExtensionVSIXs/samghelms.jupyter-notebook-vscode-0.0.2
+./Library/Assistant/SiriAnalytics.db
+./Library/Developer/Xcode/iOS DeviceSupport/iPhone9,4 15.8.2 (19H384)/Symbols/usr/lib/libobjc.A.dylib
+./Library/Developer/Xcode/iOS DeviceSupport/iPhone9,4 15.8.2 (19H384)/Symbols/System/Library/PrivateFrameworks/WebCore.framework/WebCore
+./Library/Developer/Xcode/iOS DeviceSupport/iPhone9,4 15.8.2 (19H384)/Symbols/System/Library/Caches/com.apple.dyld/dyld_shared_cache_arm64
+./Library/Developer/CoreSimulator/Caches/dyld/23G93/com.apple.CoreSimulator.SimRuntime.iOS-17-5.21F79/dyld_sim_shared_cache_arm64
+./Library/Developer/CoreSimulator/Caches/dyld/23G93/com.apple.CoreSimulator.SimRuntime.iOS-17-5.21F79/dyld_sim_shared_cache_arm64.01.dylddata
+./Library/Developer/CoreSimulator/Caches/dyld/23G93/com.apple.CoreSimulator.SimRuntime.watchOS-10-5.21T575/dyld_sim_shared_cache_arm64
+./Library/Python/3.9/lib/python/site-packages/torch/lib/libtorch_cpu.dylib
+./Library/Containers/com.docker.docker/Data/vms/0/data/Docker.raw
+./.rustup/toolchains/stable-aarch64-apple-darwin/lib/rustlib/aarch64-apple-darwin/bin/rust-lld
+./.rustup/toolchains/stable-aarch64-apple-darwin/lib/librustc_driver-0081192d93d2785c.dylib
+./opt/anaconda3/pkgs/mkl-2021.4.0-hecd8cb5_637.tar.bz2
+./opt/anaconda3/pkgs/libllvm13-13.0.1-h64f94b2_2/lib/libLLVM-13.dylib
+./opt/anaconda3/pkgs/mkl-2023.1.0-h8e150cf_43559.conda
+./opt/anaconda3/pkgs/cache/31ce02e0.q
+./opt/anaconda3/pkgs/cache/09cdf8bf.json
+./opt/anaconda3/pkgs/cache/09cdf8bf.q
+./opt/anaconda3/pkgs/cache/31ce02e0.json
+./opt/anaconda3/pkgs/rust-std-x86_64-apple-darwin-1.72.0-h059895a_0/lib/rustlib/x86_64-apple-darwin/lib/libcore-4b6dec082eeb7c38.rlib
+./opt/anaconda3/pkgs/libllvm11-11.1.0-h46f1229_5/lib/libLLVM-11.dylib
+./opt/anaconda3/pkgs/qt-webengine-5.15.9-h90a370e_4/lib/libQt5WebEngineCore.5.15.9.dylib
+./opt/anaconda3/pkgs/pytorch-2.1.0-py3.9_0/lib/python3.9/site-packages/torch/lib/libtorch_cpu.dylib
+./opt/anaconda3/pkgs/libllvm14-14.0.6-he552d86_0/lib/libLLVM-14.dylib
+./opt/anaconda3/pkgs/libllvm12-12.0.0-h9b2ccf5_3/lib/libLLVM-12.dylib
+./opt/anaconda3/pkgs/mkl-2021.4.0-hecd8cb5_637.conda
+./opt/anaconda3/pkgs/mkl-2021.4.0-hecd8cb5_637/lib/libmkl_core.dylib
+./opt/anaconda3/pkgs/mkl-2021.4.0-hecd8cb5_637/lib/libmkl_core.1.dylib
+./opt/anaconda3/pkgs/mkl-2021.4.0-hecd8cb5_637/lib/libmkl_intel_thread.1.dylib
+./opt/anaconda3/pkgs/mkl-2021.4.0-hecd8cb5_637/lib/libmkl_avx.1.dylib
+./opt/anaconda3/pkgs/mkl-2021.4.0-hecd8cb5_637/lib/libmkl_avx512.1.dylib
+./opt/anaconda3/pkgs/mkl-2021.4.0-hecd8cb5_637/lib/libmkl_intel_thread.dylib
+./opt/anaconda3/pkgs/pandoc-3.1.3-h9d075a6_0/bin/pandoc
+./opt/anaconda3/pkgs/pytorch-1.10.2-py3.9_0.tar.bz2
+./opt/anaconda3/pkgs/mkl-2023.1.0-h8e150cf_43559/lib/libmkl_core.dylib
+./opt/anaconda3/pkgs/mkl-2023.1.0-h8e150cf_43559/lib/libmkl_core.2.dylib
+./opt/anaconda3/pkgs/mkl-2023.1.0-h8e150cf_43559/lib/libmkl_avx.2.dylib
+./opt/anaconda3/pkgs/mkl-2023.1.0-h8e150cf_43559/lib/libmkl_intel_thread.2.dylib
+./opt/anaconda3/pkgs/mkl-2023.1.0-h8e150cf_43559/lib/libmkl_avx512.2.dylib
+./opt/anaconda3/pkgs/mkl-2023.1.0-h8e150cf_43559/lib/libmkl_intel_thread.dylib
+./opt/anaconda3/pkgs/pytorch-2.1.0-py3.9_0.tar.bz2
+./opt/anaconda3/pkgs/rust-1.72.0-h7e1429e_0.conda
+./opt/anaconda3/pkgs/dal-2021.6.0-haf03e11_929/lib/libonedal_core.1.1.dylib
+./opt/anaconda3/pkgs/dal-2021.6.0-haf03e11_929/lib/libonedal_core.dylib
+./opt/anaconda3/pkgs/dal-2021.6.0-haf03e11_929/lib/libonedal_core.1.dylib
+./opt/anaconda3/pkgs/dal-2021.6.0-haf03e11_929.conda
+./opt/anaconda3/pkgs/rust-1.72.0-h7e1429e_0/lib/rustlib/x86_64-apple-darwin/bin/llc
+./opt/anaconda3/pkgs/rust-1.72.0-h7e1429e_0/lib/rustlib/x86_64-apple-darwin/bin/opt
+./opt/anaconda3/pkgs/rust-1.72.0-h7e1429e_0/lib/rustlib/x86_64-apple-darwin/bin/rust-lld
+./opt/anaconda3/pkgs/rust-1.72.0-h7e1429e_0/lib/librustc_driver-7e633afbb0050726.dylib
+./opt/anaconda3/pkgs/libclang-13.0.1-root_62804_h2961583_3/lib/libclang.13.dylib
+./opt/anaconda3/pkgs/pytorch-1.10.2-py3.9_0/lib/python3.9/site-packages/caffe2/python/caffe2_pybind11_state.cpython-39-darwin.so
+./opt/anaconda3/pkgs/pytorch-1.10.2-py3.9_0/lib/python3.9/site-packages/torch/lib/libtorch_cpu.dylib
+./opt/anaconda3/pkgs/pytorch-1.10.2-py3.9_0/lib/python3.9/site-packages/torch/lib/libcaffe2_detectron_ops.dylib
+./opt/anaconda3/lib/libonedal_core.1.1.dylib
+./opt/anaconda3/lib/rustlib/x86_64-apple-darwin/bin/llc
+./opt/anaconda3/lib/rustlib/x86_64-apple-darwin/bin/opt
+./opt/anaconda3/lib/rustlib/x86_64-apple-darwin/bin/rust-lld
+./opt/anaconda3/lib/rustlib/x86_64-apple-darwin/lib/libcore-4b6dec082eeb7c38.rlib
+./opt/anaconda3/lib/libLLVM-11.dylib
+./opt/anaconda3/lib/libmkl_core.dylib
+./opt/anaconda3/lib/libmkl_core.1.dylib
+./opt/anaconda3/lib/libonedal_core.dylib
+./opt/anaconda3/lib/libQt5WebEngineCore.5.15.9.dylib
+./opt/anaconda3/lib/libLLVM-14.dylib
+./opt/anaconda3/lib/libLLVM-12.dylib
+./opt/anaconda3/lib/python3.9/site-packages/llvmlite/binding/libllvmlite.dylib
+./opt/anaconda3/lib/python3.9/site-packages/torch/lib/libtorch_cpu.dylib
+./opt/anaconda3/lib/python3.9/site-packages/numpy/.dylibs/libopenblas64_.0.dylib
+./opt/anaconda3/lib/python3.9/site-packages/catboost/_catboost.so
+./opt/anaconda3/lib/libmkl_intel_thread.1.dylib
+./opt/anaconda3/lib/libmkl_avx.1.dylib
+./opt/anaconda3/lib/libmkl_avx512.1.dylib
+./opt/anaconda3/lib/libonedal_core.1.dylib
+./opt/anaconda3/lib/librustc_driver-7e633afbb0050726.dylib
+./opt/anaconda3/lib/libmkl_intel_thread.dylib
+./opt/anaconda3/envs/torchvision/lib/python3.9/site-packages/cv2/cv2.abi3.so
+./opt/anaconda3/envs/torchvision/lib/python3.9/site-packages/torch/lib/libtorch_cpu.dylib
+./opt/anaconda3/envs/torchvision/lib/python3.9/site-packages/numpy/.dylibs/libopenblas64_.0.dylib
+./opt/anaconda3/envs/torchvision/lib/python3.9/site-packages/scipy/.dylibs/libopenblas.0.dylib
+./opt/anaconda3/envs/qflow/lib/python3.8/site-packages/llvmlite/binding/libllvmlite.dylib
+./opt/anaconda3/envs/qflow/lib/python3.8/site-packages/kaleido/executable/bin/kaleido
+./opt/anaconda3/envs/qflow/lib/python3.8/site-packages/numpy/.dylibs/libopenblas64_.0.dylib
+./opt/anaconda3/envs/qflow/lib/python3.8/site-packages/scipy/.dylibs/libopenblas.0.dylib
+./opt/anaconda3/envs/finetune/lib/python3.11/site-packages/numpy/.dylibs/libopenblas64_.0.dylib
+./opt/anaconda3/envs/seq2seq/lib/rustlib/x86_64-apple-darwin/bin/llc
+./opt/anaconda3/envs/seq2seq/lib/rustlib/x86_64-apple-darwin/bin/opt
+./opt/anaconda3/envs/seq2seq/lib/rustlib/x86_64-apple-darwin/bin/rust-lld
+./opt/anaconda3/envs/seq2seq/lib/rustlib/x86_64-apple-darwin/lib/libcore-4b6dec082eeb7c38.rlib
+./opt/anaconda3/envs/seq2seq/lib/python3.11/site-packages/torch/lib/libtorch_cpu.dylib
+./opt/anaconda3/envs/seq2seq/lib/python3.11/site-packages/numpy/.dylibs/libopenblas64_.0.dylib
+./opt/anaconda3/envs/seq2seq/lib/librustc_driver-7e633afbb0050726.dylib
+./opt/anaconda3/envs/nanogpt/bin/pandoc
+./opt/anaconda3/envs/nanogpt/lib/libLLVM-13.dylib
+./opt/anaconda3/envs/nanogpt/lib/python3.11/site-packages/torch/lib/libtorch_cpu.dylib
+./opt/anaconda3/envs/nanogpt/lib/python3.11/site-packages/numpy/.dylibs/libopenblas64_.0.dylib
+./opt/anaconda3/envs/nanogpt/lib/python3.11/site-packages/scipy/.dylibs/libopenblas.0.dylib
+./opt/anaconda3/envs/nanogpt/lib/libclang.13.dylib
+./Documents/research/chemodl/logs/24_09_2023-18_04_56_log/events.out.tfevents.1695567896.gn19.zhores.3274561.0
+./Documents/research/chemodl/logs/16_09_2023-18_02_31_log/events.out.tfevents.1694876551.gn20.zhores.2656259.0
+./Documents/research/chemodl/logs/24_09_2023-18_46_32_log/events.out.tfevents.1695570392.gn19.zhores.3289301.0
+./Documents/research/chemodl/logs/10_09_2023-20_31_59_log/events.out.tfevents.1694367119.vt03.zhores.1679537.0
+./Documents/research/chemodl/logs/17_09_2023-21_52_42_log/events.out.tfevents.1694976762.gn01.zhores.3219170.0
+./Documents/research/chemodl/logs/18_09_2023-10_14_44_log/events.out.tfevents.1695021284.gn14.zhores.3495532.0
+./Documents/research/chemodl/.git/objects/pack/pack-c56a961d87e4afce32c7a32e06a56c6935e0139c.pack
+./Documents/research/chemodl/notebooks/pipeline_regression.ipynb
+./Documents/ryte/photos/24.12.2022 Staff party.zip
+./Documents/hobbies/books/Занимательная манга. Машинное обучение (2018).pdf
+./Documents/hobbies/books/Занимательная биохимия (2016).pdf
+./Documents/семинар RL outside games – Федор Ратников от 09.04.18.mp4
+./Documents/asem_shaqyru/krita_overlay2.kra
+./Documents/asem_shaqyru/krita_overlay_7_10_oyu_double_tuys.kra
+./Documents/asem_shaqyru/krita_overlay_7_10.kra
+./.cache/torch/sentence_transformers/obrizum_all-MiniLM-L6-v2/pytorch_model.bin
+./.cache/torch/hub/checkpoints/deeplabv3_resnet50_coco-cd0a2569.pth
+./.cache/torch/hub/checkpoints/vgg16_bn-6c64b313.pth

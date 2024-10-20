@@ -1,0 +1,46 @@
+4.0K	.CFUserTextEncoding
+4.0K	.bash_history
+4.0K	.bash_profile
+4.0K	.conda
+4.0K	.condarc
+4.0K	.continuum
+4.0K	.dgl
+4.0K	.gitconfig
+4.0K	.lesshst
+4.0K	.netrc
+4.0K	.profile
+4.0K	.tcshrc
+4.0K	.viminfo
+4.0K	.wget-hsts
+4.0K	.xonshrc
+4.0K	.zsh_sessions
+4.0K	.zshenv
+4.0K	.zshrc.pre-oh-my-zsh
+8.0K	.cookiecutter_replay
+8.0K	.mongodb
+8.0K	.zprofile
+8.0K	.zshrc
+ 12K	.mono
+ 20K	.IdentityService
+ 20K	.docker
+ 20K	.ssh
+ 20K	.virtual_documents
+ 24K	.DS_Store
+ 32K	.jupyter
+ 32K	.python_history
+ 52K	.zcompdump-Nurlybek’s MacBook Pro-5.9
+132K	.zsh_history
+320K	.matplotlib
+748K	.config
+860K	.swt
+2.1M	.ipython
+2.9M	.ServiceHub
+3.2M	.anaconda
+7.5M	.azcopy
+ 19M	.oh-my-zsh
+ 48M	.dropbox
+ 81M	.cargo
+241M	.vscode
+797M	.cache
+1.1G	.rustup
+489G	./

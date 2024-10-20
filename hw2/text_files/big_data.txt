@@ -1,0 +1,443 @@
+# QFlow
+
+<div align="center">
+
+```
+╔════════════════════════════════════════════════════╗
+║     ██████╗ ███████╗██╗      ██████╗ ██╗    ██╗    ║
+║    ██╔═══██╗██╔════╝██║     ██╔═══██╗██║    ██║    ║
+║    ██║   ██║█████╗  ██║     ██║   ██║██║ █╗ ██║    ║
+║    ██║▄▄ ██║██╔══╝  ██║     ██║   ██║██║███╗██║    ║
+║    ╚██████╔╝██║     ███████╗╚██████╔╝╚███╔███╔╝    ║
+║     ╚══▀▀═╝ ╚═╝     ╚══════╝ ╚═════╝  ╚══╝╚══╝     ║
+╚════════════════════════════════════════════════════╝
+```
+
+</div>
+
+<div align="center">
+  ML-specific workflow management platform with batteries included.
+</div>
+
+<p align="center">
+  <a href="#about-qflow"><b>About</b></a> &bull;
+  <a href="#quick-start"><b>Quick Start</b></a> &bull;
+  <a href="https://d1alu1xakm6tvv.cloudfront.net"><b>Documentation</b></a> &bull;
+  <a href="https://d1alu1xakm6tvv.cloudfront.net/tutorials.html"><b>Tutorials</b></a>
+</p>
+
+<div align="center">
+
+[![Platform Support](https://img.shields.io/badge/platform-Linux%20%7C%20macOS-blue)](<>)
+
+</div>
+
+## About QFlow
+
+**QFlow** is an easy to use ML-specific workflow management platform with focus on reducing boilerplate and following engineering practices in DS projects.
+
+## Quick start
+
+Follow the steps below to get started with QFlow.
+
+**1. Install Qflow on your development environment**
+
+Install qflow:
+
+```shell
+pip install qflow
+```
+
+Or using other package manager of your choice.
+
+To learn about the usage of qflow commands you can type:
+
+```console
+~$: qflow --help
+Usage: qflow [OPTIONS] COMMAND [ARGS]...
+Qflow CLI interface
+┌─ Options ──────────────────────────────────────────────────────────────────┐
+│ --version  -V                                                              │
+│ --help     -h        Show this message and exit.                           │
+└────────────────────────────────────────────────────────────────────────────┘
+┌─ Commands ─────────────────────────────────────────────────────────────────┐
+│ configure       Configure new component for Qflow project                  │
+│ init            Create a new Qflow project                                 │
+│ new             Create a new workflow                                      │
+│ ps              List runs for the workflow                                 │
+│ run             Run a workflow                                             │
+│ teardown        Tear down selected configuration                           │
+│ tune            Tune hyperparameters                                       │
+│ visualise       Visualise workflow execution graph                         │
+└────────────────────────────────────────────────────────────────────────────┘
+```
+
+For each of these commands your can also print help message `--help` (`-h`) option.
+For example:
+
+```shell
+qflow init --help
+```
+
+**2. Create new project with QFlow**
+
+```shell
+qflow init --project <your project> --aws-id <account with codeartifacts>
+```
+
+This will result in new project with some convenience things in place.
+Newly created project will have these important parts.
+
+```
+├── configs           <- configuration files for the whole project
+├── notebooks         <- jupyter notebooks for rapid experimentation
+├── src               <- package root folder with code for your project and tests
+└── pyproject.toml    <- build configuration, dependencies, tools
+```
+
+You can also use short versions of the options (for more details see `--help`).
+For example, you can create a project as follows:
+
+```shell
+qflow init -p <your project> -a <account with codeartifacts>
+```
+
+In order to create new pipeline as part of your project you need to call:
+
+```shell
+qflow new --workflow <name of your workflow>
+```
+
+or
+
+```shell
+qflow new -w <name of your workflow>
+```
+
+It will create a new blank workflow in your project at: `workflows/<name of your workflow>`.
+
+**3. Run the workflow**
+
+Run your workflow using the following command:
+
+```shell
+qflow run --workflow <name of your workflow>
+```
+
+Or simply use your IDE to run workflow file as a usual python script that gives you native access to your favourite debugging tools.
+
+Incrementally express your pipeline in terms of qflow steps and enjoy automatic intermediate result tracking, observability and ease of remote or even distributed execution.
+
+**4. Explore workflow results**
+
+Use QFlow client library to inspect run results:
+
+```python
+from qflow import api
+
+run_view = api.inspect_run(
+    tracker=...,  # configured tracker
+    experiment_id="<experiment id>",
+    run_id="<run id>",
+)
+```
+
+Or explore results in tracker UI directly.
+
+For [MLflow](https://mlflow.org/) tracker the command for local launch would look like this:
+
+```shell
+mlflow ui --backend-store-uri .qflow/tracker/mlflow --default-artifact-root ./
+```
+
+## Tests
+
+There are two kinds of tests in the project:
+
+- unit tests,
+- end-to-end tests.
+
+They are located in directories `tests/unit` and `tests/e2e` respectively.
+
+To run all tests, do
+
+```shell
+make test
+```
+
+in the project root directory.
+
+## QFlow Glossary
+
+**Project** is a set of workflows, a package with code, auxiliary files, and settings.
+
+**Workflow** is a structured set of steps of computations with a static set of inputs and parameters.
+
+**Workflow parameters** are arguments for the workflow that can be used to set up steps.
+
+**Step** is an atomic part of a workflow: by composing multiple steps together a workflow is formed. It's important that steps are isolated and can be run independently with reproducible results.
+
+**Provider** is a special workflow step that generates inputs and passes them to workflow steps.
+
+**Artifact** is any object that is created inside the step. An artifact can be a result or an intermediate result of a calculation. You cannot peek into the internal state of artifacts inside the workflow, but you can work with them as with real objects inside the steps.
+
+**Artifact factory** is an object that can save and load a specific type of artifact; each factory has a corresponding artifact type it handles.
+
+**Factory registry** is a collection of factories. In many cases, factories are boilerplate: hence, some registries dynamically create factories in case you are going to unpack the composition of known types. For example, the factory registry makes maintaining a tuple of objects easy if factories for nested types are already defined.
+
+**Graph** is a representation of a workflow. We can think of a workflow as a graph, where each step is a node, and the edges of the graph connect the nodes in the order in which the nodes must be computed.
+
+**Workflow building** is the stage when QFlow creates a computational graph using the workflow script. At this stage, we don't run any steps but only build the graph and check the order in which the nodes must be executed.
+
+**Workflow computation** is the stage when the computation represented as a graph is actually performed and steps are executed.
+
+## FAQ
+
+<details><summary> How do I configure a newly created project? </summary><p>
+After you've created the project, the necessary components are already configured, but you can add additional settings. If you want to do it after QFlow installation, call:
+
+```
+qflow configure --component {component_name}
+```
+
+Additionally, a file `qflow/project_name/configs/project.yaml` stores settings common to the entire project.
+
+In this file you'll find the tracker that you use, project name, launcher, and so on. Below is what this file may contain:
+
+```
+defaults:
+- _self_
+- paths: default
+- launcher: local
+- tuner: optuna
+- tracker: mlflow
+experiment_id: null
+experiment_name: null
+project_name: dask
+run_id: null
+run_name: null
+```
+
+</p></details>
+
+<details><summary> A bunch of files appeared after I created the project, how do I use them? </summary><p>
+
+Todo: describe the project structure, specify key files
+Todo: workflow, readme, configs, tests
+
+- `config.yaml`. This file allows you to override any project-wide settings;
+
+</p></details>
+
+<details><summary> How to create a new workflow? </summary><p>
+
+You may have multiple workflows inside one project. To create a workflow, just run:
+
+```
+qflow new --workflow {workflow_name}
+```
+
+After that, a new `qflow/{project_name}/workflows/{workflow_name}/workflow.py` directory will appear in your project.
+
+In this file, a class has already been created for you, in which you can describe the workflow and its steps!
+
+Also in this file, in the `__main__` block, you will see the `qflow.launch` command. This is the default entry point for QFlow.
+
+</p></details>
+
+<details><summary> How to run a workflow? </summary><p>
+
+You can run the workflow with:
+
+```
+qflow run --workflow {workflow_name}
+```
+
+Or using the interpreter (possible in the IDE):
+
+```
+python {workflow_file}.py
+```
+
+You can also call other commands from the IDE except for `run`, for this you need to add the name of the command:
+
+```bash
+python {workflow_file}.py tune
+```
+
+</p></details>
+
+<details><summary> How do I describe workflow steps? </summary><p>
+
+Step results must be deterministic. If you run the step twice with the same parameters on the same or other machine, results must reproduce.
+
+Initialize the steps by creating separate classes for each step. Write those classes in the workflow file, or create a more complex file structure. Decorate steps classes with a `@qflow.step` decorator.
+
+An essential part of each step is an `.apply()` method. QFlow uses this method to call a step. Make sure that every step contains its logic in `.apply()`
+
+We expect that you initialize all step classes from the workflow class. You can’t pass any parameters directly from the config into steps. Instead, use the workflow class as an entry point.
+
+Call the steps sequentially from the workflows `.run()` method. This is how you describe the order in which steps are run.
+
+So, to create the first step
+
+- write your step class with an `.apply()` method
+- decorate the class with the `@qflow.step`
+- initialize this class in the workflow class
+- and call it from there.
+
+</p></details>
+
+<details><summary> What is a tracker? </summary><p>
+
+The tracker is a tool that allows you to record important parameters when training and using models.
+
+You can track the training of the model, what data the model received or its artifacts. You also can write the metrics that were obtained after training or other parameters that are of interest to you. Using the tracker, you can write structured logs, not just output information to the console.
+
+We are adding new trackers to the project so that you can use the most convenient for you. Now QFlow supports the following options:
+
+- wandb,
+- mlflow,
+- file tracker
+
+You can choose any of them when creating a project or after. To configure a component after creating a project, call:
+
+```bash
+qflow configure --component {component_name}
+```
+
+</p></details>
+
+<details><summary> What is a launcher? </summary><p>
+
+The launcher contains all the info and settings for launching the workflow. For local launch and debugging, a local launcher is useful, but for heavy calculations, a launcher that starts calculations in the cloud is more suitable.
+
+</p></details>
+
+<details><summary> What is a tuner? </summary><p>
+
+The tuner allows you to run the workflow launcher with different parameters to get the best result in terms of a certain quality metric. The metric to be optimized must be returned from the workflow.
+
+</p></details>
+
+<details><summary> How to pass parameters and data to workflow? </summary><p>
+
+We pass all the parameters as arguments to the workflow `.run()` method.
+
+QFlow may pick up these arguments by two ways:
+
+1. From the workflow config `qflow/{project_name}/workflows/{workflow_name}/config.yaml`
+
+2. Directly from `.run()` arguments. If you have data that you need to load from a file, specify the file and load it with a factory. Below is an example of how this may look in `.run()` method:
+
+```
+def run(
+     self,
+     train_point_cloud: PointCloud = providers.factory_load(
+         pathlib.Path("resources/train_point_cloud")
+     )
+) -> Generator[qflow.RuntimeInfo, None, Tuple[Assignment, PointCloud]]
+```
+
+Note, that the inputs of `workflow.run()` are the starting point of a computational graph constructing algorithm. Thus, `workflow.run()` must have at least one input. Otherwise, the graph creation will simply ignore all the steps and your computation won't be even run.
+
+</p></details>
+
+<details><summary> How do I see my workflow results? </summary><p>
+
+The structure of the workflow outputs is as follows:
+
+TODO is this all?
+
+- `RuntimeInfo` are metrics designed for humans. It's here to help you debug and validate that everything works. This is optional
+- Simply return the result of the workflow from the `.run()` method. The result can be of arbitrary type, but it's required.
+-
+
+</p></details>
+
+<details><summary> How to use workflow's config.yaml? </summary><p>
+
+File `qflow/{project_name}/workflows/{workflow_name}/config.yaml` has three sections:
+
+- `defaults` contains workflow settings (tracker, launcher, etc.)
+- `inputs` are the arguments that QFlow will pass to the workflow `.run()` method.
+- `parameters` is for parameters that will be available as attributes of the workflow class.
+
+`defaults`
+
+You can have one workflow or multiple workflows in a project. Entire project settings are located in the `project.yaml` config. They apply to all workflows.
+
+But if at the same time you need one workflow to be configured differently, write its settings separately in its `config.yaml` to override the project parameters.
+
+We assume your workflow can be quite complex. If this config grows too large, consider creating a directory `config/` and place `config/main.yaml` there as entrypoint.
+
+When the workflow starts, it asks questions and writes answers to the config. To reconfigure after, just change the config accordingly.
+
+</p></details>
+
+<details><summary> Can I log my computations to the console? </summary><p>
+
+Unfortunately, no! Since the steps can be performed remotely, we do not allow writing logs to the console when the steps are run. You'll have to wait for the workflow results and see them when they're ready.
+
+But we have a progress bar mechanism, where you can send a message and at the same time some useful information on progress. To use it, do:
+
+```
+progress = qflow.ProgressBar(name="Iteration", total=self.max_iter)
+```
+
+</p></details>
+
+<details><summary> How to track results of my workflow?  </summary><p>
+
+You'll need to use method `qflow.label_info` in combination with `qflow.Metric` class.
+
+`qflow.label_info` is an optional method that records the metric. Its purpose is to get the runtime info inside the workflow. Since it's an optional thing, you can track only metrics that you need for debugging purposes or skip tracking at all. This is the best (sometimes the only) way you can extract valuable information from a workflow in a controlled fashion.
+
+To track important metrics, it the workflow class, do:
+
+```
+yield from qflow.label_info(
+     StepClass(), my_metric="metric_name"
+).apply()
+```
+
+Here we declare a variable `metric_name`. This place does not intercept the result, but only marks the variable as important.
+
+To report a metric, in the class of the step in the `apply` method, generate the result using the following construction
+
+```
+yield qflow.Metric(name="metric_name", value=metric_value)
+```
+
+Note that names passed as a mapping in `qflow.label_info` have to be the same as the names used to create `Runtime_Info` objects inside steps.
+
+Also note that when you report a metric from a step or a workflow you should set it's annotation to be a generator: `Generator[qflow.RuntimeInfo, None, ReturnT]`.
+
+After that, you can find the result in the `qflow/{project_name}/.qflow` directory
+
+**!IMPORTANT!** In order for metrics reporting to work, both the step and the workflow must be decorated. And you also need to annotate your step with `Generator[qflow.RuntimeInfo, None, YourReturnType]`
+
+</p></details>
+
+<details><summary> Will my graph be generated automatically </summary><p>
+
+The computational graph will be generated automatically, but only steps that have received their inputs from other steps or providers are included. You can call a step with data from parameters or data generated on the fly, but such steps will not be added to the graph.
+
+</p></details>
+
+<details><summary> What decorators are there in QFlow? </summary><p>
+
+You can find a list of decorators in `qflow/dsl/decorators.py`. There are:
+
+- **workflow** is a decorator that marks a class as a workflow.
+- **step** is a decorator that marks a class as a step.
+- **provider** creates provider instance from given function.
+
+**mixin** is used to create reusable components for step or workflow. For instance, if many similar workflows use the same preprocessing, then you can turn it into a mixin and use it in several workflows. The same for the steps. By the way, if your class is decorated, it must be either mixin or pydantic. Then steps and workflow can be inherited from it.
+
+</p></details>
+
+## If you have other questions
+
+1. [Read the docs](https://d1alu1xakm6tvv.cloudfront.net)
+2. [Open a feature request or report a bug](https://github.com/quantori/ml-pipelines/issues)
