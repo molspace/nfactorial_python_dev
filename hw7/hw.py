@@ -52,7 +52,7 @@ factorial(6) -> 720
 
 def factorial(n: int) -> int:
     # write your code here
-    if n in (0, 1):
+    if n in [0, 1]:
         return 1
     factor = 1
     while n > 1:
@@ -135,16 +135,14 @@ collatz_sequence_length(27) -> 112
 
 def collatz_sequence_length(n: int) -> int:
     # write your code here
-    count = 0
+    count = 1
     while n != 1:
         if n % 2 == 0:
             n = n // 2
-            count =+1
         else:
             n = n * 3 + 1
-            count =+1
+        count =+1
     return count
-
 
 """
 Exercise-9: is_leap_year
@@ -158,8 +156,16 @@ is_leap_year(1900) -> False
 
 def is_leap_year(year: int) -> bool:
     # write your code here
-    pass
-
+    if year % 4 == 0:
+        if year % 100 == 0:
+            if year % 400 == 0:
+                return True
+            else:
+                return False
+        else:
+            return True
+    else:
+        return False
 
 """
 Exercise-10: count_words
@@ -173,8 +179,7 @@ count_words("This is a test") -> 4
 
 def count_words(s: str) -> int:
     # write your code here
-    pass
-
+    return len(s.split())
 
 """
 Exercise-11: is_palindrome
@@ -189,7 +194,7 @@ is_palindrome("hello") -> False
 
 def is_palindrome(s: str) -> bool:
     # write your code here
-    pass
+    return s == s[::-1]
 
 """
 Exercise-12: sum_of_multiples
@@ -204,8 +209,11 @@ sum_of_multiples(20, 7, 11) -> 168
 
 def sum_of_multiples(n: int, x: int, y: int) -> int:
     # write your code here
-    pass
-
+    multiples_sum = 0
+    for i in range(1, n+1):
+        if i % x == 0 or i % y == 0:
+            multiples_sum += i
+    return multiples_sum
 
 """
 Exercise-13: gcd
@@ -219,8 +227,9 @@ gcd(27, 15) -> 3
 
 def gcd(a: int, b: int) -> int:
     # write your code here
-    pass
-
+    while b != 0:
+        a, b = b, a % b
+    return a
 
 """
 Exercise-14: lcm
@@ -234,8 +243,15 @@ lcm(6, 8) -> 24
 
 def lcm(a: int, b: int) -> int:
     # write your code here
-    pass
+    if a == 0 or b == 0:
+        return 0
 
+    def _gcd(a: int, b: int) -> int:
+        while b != 0:
+            a, b = b, a % b
+        return a
+    
+    return abs(a * b) // _gcd(a, b)
 
 """
 Exercise-15: count_characters
@@ -251,7 +267,7 @@ count_characters("apple", "p") -> 2
 
 def count_characters(s: str, c: str) -> int:
     # write your code here
-    pass
+    return s.count(c)
 
 
 """
@@ -266,8 +282,7 @@ digit_count(4567) -> 4
 
 def digit_count(n: int) -> int:
     # write your code here
-    pass
-
+    return len(str(n))
 
 """
 Exercise-17: is_power_of_two
@@ -281,8 +296,7 @@ is_power_of_two(10) -> False
 
 def is_power_of_two(n: int) -> bool:
     # write your code here
-    pass
-
+    return (n & (n - 1)) == 0
 
 """
 Exercise-18: sum_of_cubes
@@ -296,8 +310,7 @@ sum_of_cubes(4) -> 100
 
 def sum_of_cubes(n: int) -> int:
     # write your code here
-    pass
-
+    return (n * (n + 1) // 2) ** 2
 
 """
 Exercise-19: is_perfect_square
@@ -311,7 +324,9 @@ is_perfect_square(10) -> False
 
 def is_perfect_square(n: int) -> bool:
     # write your code here
-    pass
+    sqrt_n = int(n ** 0.5)
+    return sqrt_n * sqrt_n == n
+
 
 
 """
@@ -326,4 +341,6 @@ is_armstrong_number(370) -> True
 
 def is_armstrong_number(n: int) -> bool:
     # write your code here
-    pass
+    digits = str(n)
+    armstrong = sum([int(digit) ** len(digits) for digit in digits])
+    return armstrong == n
