@@ -89,8 +89,7 @@ sum_of_digits(98765) -> 35
 """
 
 def sum_of_digits(n: int) -> int:
-    return sum(str(n).split())
-
+    return sum([int(digit_str) for digit_str in str(abs(n))])
 
 """
 Exercise-6: reverse_string
@@ -104,7 +103,6 @@ reverse_string("world") -> "dlrow"
 def reverse_string(s: str) -> str:
     # write your code here
     return s[::-1]
-
 
 """
 Exercise-7: sum_of_squares
@@ -138,10 +136,10 @@ def collatz_sequence_length(n: int) -> int:
     count = 1
     while n != 1:
         if n % 2 == 0:
-            n = n // 2
+            n //= 2
         else:
-            n = n * 3 + 1
-        count =+1
+            n = 3 * n + 1
+        count += 1
     return count
 
 """
