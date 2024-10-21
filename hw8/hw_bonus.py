@@ -58,7 +58,6 @@ def find_duplicate(my_list: list[int]) -> int:
     from collections import Counter
     return Counter(my_list).most_common(1)[0][0]
 
-
 """
 💎 Exercise-4 (Group Anagrams):
 Write a function "group_anagrams(words: list[str]) -> list[list[str]]" that 
@@ -74,5 +73,8 @@ group_anagrams(["eat", "tea", "tan", "ate", "nat", "bat"])
 
 def group_anagrams(words: list[str]) -> list[list[str]]:
     # write your code here
-    from collections import Counter
-    
+    from collections import defaultdict
+    anagram_map = defaultdict(list)
+    for word in words:
+        anagram_map[''.join(sorted(word))].append(word)
+    return list(anagram_map.values())
