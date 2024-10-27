@@ -90,7 +90,7 @@ count_in_range([1, 2, 3, 4, 5, 4, 3, 2, 1], 2, 4) -> 3
 """
 
 def count_in_range(my_list: list, start: int, end: int) -> int:
-    return len(set(my_list[start:end+1]))
+    return len(set(my_list[start-1:end]))
 
 """
 Exercise-9: Swap dictionary keys and values
