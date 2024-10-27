@@ -103,7 +103,11 @@ swap_dict({1: 'a', 2: 'b', 3: 'c'}) -> {'a': 1, 'b': 2, 'c': 3}
 """
 
 def swap_dict(d: dict) -> dict:
-    return {value: key for value, key in zip(d.values(), d.keys())}
+    seen = {}
+    for key, value in d.items():
+        if value not in seen:  # Keep the first occurrence of duplicate values
+            seen[value] = key
+    return seen
 
 """
 Exercise-10: Subset check
