@@ -9,7 +9,13 @@ two_sum([2, 7, 11, 15], 9) -> (0, 1)
 """
 
 def two_sum(nums: list, target: int) -> tuple:
-    pass
+    map = {}
+    for i in range(len(nums)):
+        first_num = nums[i]
+        second_num = target - first_num
+        if second_num in map:
+            return (map[second_num], i)
+        map[first_num] = i
 
 """
 💎 Exercise-2: Isomorphic Strings
@@ -22,7 +28,10 @@ is_isomorphic('egg', 'add') -> True
 """
 
 def is_isomorphic(s: str, t: str) -> bool:
-    pass
+    if len(s) != len(t):
+        return False
+    from collections import Counter
+    return sorted(Counter(s).values()) == sorted(Counter(t).values())
 
 """
 💎 Exercise-3: Check Alien Dictionary
