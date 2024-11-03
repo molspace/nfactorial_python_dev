@@ -15,7 +15,7 @@ class TestFunctions(unittest.TestCase):
         self.assertEqual(hw_bonus.is_isomorphic('foo', 'bar'), False)
         self.assertEqual(hw_bonus.is_isomorphic('ab'*10**5, 'cd'*10**5), True)
         self.assertEqual(hw_bonus.is_isomorphic('aa'*10**5, 'ab'*10**5), False)
-        self.assertEqual(hw_bonus.is_isomorphic('abcd', 'dcba'), False)
+        self.assertEqual(hw_bonus.is_isomorphic('abcd', 'dcba'), True)
 
     def test_is_alien_sorted(self):
         self.assertEqual(hw_bonus.is_alien_sorted(["hello","leetcode"], "hlabcdefgijkmnopqrstuvwxyz"), True)
