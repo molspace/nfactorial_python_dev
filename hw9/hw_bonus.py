@@ -28,10 +28,7 @@ is_isomorphic('egg', 'add') -> True
 """
 
 def is_isomorphic(s: str, t: str) -> bool:
-    if len(s) != len(t):
-        return False
-    from collections import Counter
-    return sorted(Counter(s).values()) == sorted(Counter(t).values())
+    return len(set(zip(s, t))) == len(set(s)) == len(set(t))
 
 """
 💎 Exercise-3: Check Alien Dictionary
@@ -43,7 +40,9 @@ is_alien_sorted(["hello","leetcode"], "hlabcdefgijkmnopqrstuvwxyz") -> True
 """
 
 def is_alien_sorted(words: list, order: str) -> bool:
-    pass
+    alien_order = {char: idx for idx, char in enumerate(order)}
+    transformed_words = [[alien_order[char] for char in word] for word in words]
+    return all(transformed_words[i] <= transformed_words[i + 1] for i in range(len(transformed_words) - 1))
 
 """
 💎 Exercise-4: Longest Substring Without Repeating Characters
@@ -55,7 +54,17 @@ length_of_longest_substring('abcabcbb') -> 3
 """
 
 def length_of_longest_substring(s: str) -> int:
-    pass
+    char_set = set()
+    left = 0
+    max_length = 0
+    for right in range(len(s)):
+        while s[right] in char_set:
+            char_set.remove(s[left])
+            left += 1
+        char_set.add(s[right])
+        window_len = right - left + 1
+        max_length = max(max_length, window_len)
+    return max_length
 
 """
 💎 Exercise-5: Group Shifted Strings
@@ -69,4 +78,16 @@ group_shifted(["abc", "bcd", "acef", "xyz", "az", "ba", "a", "z"]) -> [["abc","b
 """
 
 def group_shifted(strings: list) -> list:
-    pass
+    from collections import defaultdict
+    map = defaultdict(list)
+    for string in strings:
+        diff = ord(string[0]) - ord('a')
+        norm_chars = []
+        for char in string:
+            d = ord(char) - diff
+            if d < ord('a'):
+                d += 26
+            norm_chars.append(chr(d))
+        norm_strings = ''.join(norm_chars)
+        map[norm_strings].append(string)
+    return list(map.values())
