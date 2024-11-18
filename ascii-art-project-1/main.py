@@ -44,9 +44,10 @@ def main(input_text, style, output):
         print(ascii_text)
         result_list.append(ascii_text)
 
-    # write to the file
-    with open(output, 'w') as file:
-        file.write('\n'.join(result_list))
+    if output:
+        # write to the file
+        with open(output, 'w') as file:
+            file.write('\n'.join(result_list))
 
 
 if __name__ == '__main__':
