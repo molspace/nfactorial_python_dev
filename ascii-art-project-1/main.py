@@ -13,15 +13,12 @@ def create_dict(ascii_raw):
         start_index = end_index
     return ascii_dict
 
-def convert_to_ascii(input_text, ascii_dict):
-    ascii_text_list = [ascii_dict[letter] for letter in input_text]
+def convert_char_to_ascii(input_text: str, ascii_dict: dict):
+    ascii_text_list = (ascii_dict[letter] for letter in input_text)
     return ascii_text_list
 
 def join_chars(ascii_text_list):
-    print
-    for lines in zip(ascii_text_list):
-        print(lines)
-    ascii_text = [''.join(lines) for lines in zip(ascii_text_list)]
+    ascii_text = '\n'.join([''.join(lines) for lines in zip(*ascii_text_list)])
     return ascii_text
 
 def main():
@@ -30,8 +27,9 @@ def main():
         ascii_raw = f.readlines()
     
     ascii_dict = create_dict(ascii_raw)
-    ascii_text_list = convert_to_ascii('abc def xyz !~^', ascii_dict)
-    join_chars(ascii_text_list)
+    ascii_text_list = convert_char_to_ascii('abc def xyz !~^', ascii_dict)
+    ascii_text = join_chars(ascii_text_list)
+    print(ascii_text)
 
 if __name__ == '__main__':
     main()
