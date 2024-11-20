@@ -1,2 +1,5 @@
 __pycache__/
 *.DS_Store
+hw13/new_environment/*
+hw13/new_environment_local_pkgs/*
+hw13/env_from_requirements/*
