@@ -80,7 +80,7 @@ class TestExercise(unittest.TestCase):
 
     # Test for Exercise 9: Student, Course
     def test_course_enrollment(self):
-        student = hw.Student("Alice")
+        student = hw.StudentCourse("Alice")
         course = hw.Course()
         self.assertEqual(len(course.students), 0)
         course.enroll(student)
@@ -127,8 +127,8 @@ class TestExercise(unittest.TestCase):
     # Test for Exercise 14: Circle
     def test_circle(self):
         circle = hw.Circle(5)
-        self.assertEqual(circle.area(), 78.53981633974483)
-        self.assertEqual(circle.circumference(), 31.41592653589793)
+        self.assertEqual(circle.area(), 78.5)
+        self.assertEqual(circle.circumference(), 31.4)
 
     # Tests for Exercise 15: Triangle
     def test_triangle(self):

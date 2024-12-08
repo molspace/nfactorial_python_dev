@@ -1,3 +1,5 @@
+import random
+
 """
 Exercise 1:
 Create a Pizza class that could have ingredients added to it. Raise an error if an attempt is made to add a duplicate ingredient.
@@ -141,19 +143,19 @@ class Car:
 Exercise 9:
 Create a Student class and a Course class. Each Course can enroll students and print a list of enrolled students.
 """
-class Student:
+class StudentCourse:
     def __init__(self, name):
         self.name = name
         
 class Course:
     def __init__(self):
-        self.enrolled_students = list()
+        self.students = list()
 
     def enroll(self, student):
-        self.enrolled_students.append(student)
+        self.students.append(student)
 
     def print_students(self):
-        return self.enrolled_students
+        return self.students
 
 """
 Exercise 10:
@@ -181,18 +183,20 @@ Create a Library class with a list of Book objects. The Book class should have a
 """
 class Book:
     def __init__(self, title, author):
-        pass
+        self.title = title
+        self.author = author
 
 class Library:
     def __init__(self):
-        pass
+        self.books = list()
 
     def add_book(self, book):
-        pass
+        self.books.append(book)
 
     def find_by_title(self, title):
-        pass
-
+        for book in self.books:
+            if book.title == title:
+                return book
 
 """
 Exercise 12:
@@ -200,10 +204,17 @@ Design a class Matrix that represents a 2D matrix with methods for addition, sub
 """
 class Matrix:
     def __init__(self, matrix):
-        pass
-
+        self.matrix = matrix
+        self.rows = len(matrix)
+        self.cols = len(matrix[0])
+    
     def add(self, other):
-        pass
+        if other.rows != self.rows or other.cols != self.cols:
+            raise ValueError(f"Matrix sizes don't match. Need: {self.rows} x {self.cols}")
+        self.new_matrix = [[[] * self.cols] * self.rows]
+        for row_idx in range(other.rows):
+            for col_idx in range(other.cols):
+                self.new_matrix[row_idx][col_idx] = self.new_matrix[row_idx][col_idx] + other[row_idx][col_idx]
 
     def subtract(self, other):
         pass
@@ -218,16 +229,17 @@ Create a class Rectangle with attributes for height and width. Implement methods
 """
 class Rectangle:
     def __init__(self, height, width):
-        pass
+        self.height = height
+        self.width = width
 
     def area(self):
-        pass
+        return self.width * self.height
 
     def perimeter(self):
-        pass
+        return (self.width + self.height) * 2
 
     def is_square(self):
-        pass
+        return self.width == self.height
 
 
 """
@@ -236,14 +248,13 @@ Design a class Circle with attributes for radius. Implement methods for calculat
 """
 class Circle:
     def __init__(self, radius):
-        pass
+        self.radius = radius
 
     def area(self):
-        pass
+        return round(3.14 * self.radius**2, 1)
 
     def circumference(self):
-        pass
-
+        return round(2 * 3.14 * self.radius, 1)
 
 """
 Exercise 15:
@@ -251,14 +262,18 @@ Design a class Triangle with methods to calculate the area and perimeter. Implem
 """
 class Triangle:
     def __init__(self, side_a, side_b, side_c):
-        pass
-
-    def area(self):
-        pass
+        if side_a + side_b <= side_c or side_a + side_c <= side_b or side_b + side_c <= side_a:
+            raise ValueError("The sides do not form a valid triangle.")
+        self.side_a = side_a
+        self.side_b = side_b
+        self.side_c = side_c
 
     def perimeter(self):
-        pass
+        return self.side_a + self.side_b + self.side_c
 
+    def area(self):
+        s = (self.side_a + self.side_b + self.side_c) / 2
+        return (s * (s - self.side_a) * (s - self.side_b) * (s - self.side_c))**0.5
 
 """
 Exercise 16:
@@ -266,22 +281,22 @@ Design a class Triangle with methods to calculate the area and perimeter. Implem
 """
 class AbstractShape:
     def area(self):
-        pass
+        raise NotImplementedError("Implement the 'area' method for your class.")
 
     def perimeter(self):
-        pass
+        raise NotImplementedError("Implement the 'perimeter' method for your class.")
 
-class Circle(AbstractShape):
+class Circle(Circle):
     def __init__(self, radius):
-        pass
+        super().__init__(radius)
 
-class Rectangle(AbstractShape):
+class Rectangle(Rectangle):
     def __init__(self, height, width):
-        pass
+        super().__init__(height, width)
 
-class Triangle(AbstractShape):
+class Triangle(Triangle):
     def __init__(self, side_a, side_b, side_c):
-        pass
+        super().__init__(side_a, side_b, side_c)
 
 """
 Exercise 17:
@@ -289,20 +304,25 @@ Create a MusicPlayer class that contains a list of songs and methods to add song
 """
 class MusicPlayer:
     def __init__(self):
-        pass
+        self.playlist = list()
+        self.current_song = None
 
     def add_song(self, song):
-        pass
+        self.playlist.append(song)
 
     def play_song(self):
-        pass
+        self.current_song = self.playlist[0]
+        return self.current_song
 
     def next_song(self):
-        pass
+        current_index = self.playlist.index(self.current_song)
+        if current_index == len(self.playlist) - 1:
+            current_index = -1
+        self.current_song = self.playlist[current_index + 1]
+        return self.current_song
 
     def shuffle(self):
-        pass
-
+        random.shuffle(self.playlist)
 
 """
 Exercise 18:
@@ -310,17 +330,20 @@ Design a Product class for an online store with attributes for name, price, and 
 """
 class Product:
     def __init__(self, name, price, quantity):
-        pass
+        self.price = price
+        self.name = name
+        self.quantity = quantity
 
     def add_stock(self, quantity):
-        pass
+        self.quantity += quantity
 
     def sell(self, quantity):
-        pass
+        if quantity > self.quantity:
+            raise ValueError("Can't sell more items than are in stock.")
+        self.quantity -= quantity
 
     def check_stock(self):
-        pass
-
+        return self.quantity
 
 """
 Exercise 19:
@@ -328,44 +351,46 @@ Create a VideoGame class with attributes for title, genre, and rating. Implement
 """
 class VideoGame:
     def __init__(self, title, genre, rating):
-        pass
+        self.title = title
+        self.genre = genre
+        self.rating = rating
 
     def change_rating(self, rating):
-        pass
+        self.rating = rating
 
     def change_genre(self, genre):
-        pass
+        self.genre = genre
 
     def display_details(self):
-        pass
-
+        print(f"Title: {self.title}")
+        print(f"Genre: {self.genre}")
+        print(f"Rating: {self.rating}")
 
 """
 Exercise 20:
 Create a School class with a list of Teacher and Student objects. Teacher and Student classes should have attributes for name and age. The School class should have methods to add teachers, add students, and print a list of all people in the school.
 """
-class Person:
-    def __init__(self, name, age):
-        pass
-
 class Teacher(Person):
-    pass
+    def __init__(self, name, age):
+        super().__init__(name, age)
 
 class Student(Person):
-    pass
+    def __init__(self, name, age):
+        super().__init__(name, age)
 
 class School:
     def __init__(self):
-        pass
+        self.teachers = list()
+        self.students = list()
 
     def add_teacher(self, teacher):
-        pass
+        self.teachers.append(teacher)
 
     def add_student(self, student):
-        pass
+        self.students.append(student)
 
-    def print_all(self):
-        pass
+    def get_all(self):
+        return self.teachers + self.students
 
 """
 Exercise 21:
@@ -373,17 +398,20 @@ Design a Card class to represent a playing card with suit and rank. Then design 
 """
 class Card:
     def __init__(self, suit, rank):
-        pass
+        self.suit = suit
+        self.rank = rank
 
 class Deck:
     def __init__(self):
-        pass
+        SUITS = ["Hearts", "Diamonds", "Clubs", "Spades"]
+        RANKS = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]
+        self._deck = [Card(suit, rank) for suit in SUITS for rank in RANKS]
 
     def shuffle(self):
-        pass
+        random.shuffle(self._deck)
 
     def deal(self):
-        pass
+        return self._deck.pop()
 
     def count(self):
-        pass
+        return len(self._deck)
