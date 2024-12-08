@@ -8,7 +8,7 @@ class Pizza:
         
     def add_ingredient(self, ingredient):
         if ingredient not in self.ingredients:
-            self.ingredients.append(ingredient)
+            self.ingredients.add(ingredient)
         else:
             raise ValueError(f'Ingredient {ingredient} was already added in Pizza.')
 
@@ -41,7 +41,7 @@ class Stack:
         self._stack = list()
 
     def push(self, item):
-        self._stack += item
+        self._stack.append(item)
 
     def pop(self):
         if self.is_empty:
@@ -77,9 +77,9 @@ Create a class Person with attributes for name and age. Implement a method birth
 class Person:
     def __init__(self, name, age):
         self.name = name
-        self.age = age
-        if self.age < 0:
+        if age < 0:
             raise ValueError("Age can't be less than 0.")
+        self.age = age
 
     def birthday(self):
         self.age += 1
@@ -90,16 +90,15 @@ Create an Animal base class and a Dog and Cat derived classes. Each animal shoul
 """
 class Animal:
     def sound(self):
-        pass
+        raise NotImplementedError("Implement the 'sound' method for your class.")
 
 class Dog(Animal):
     def sound(self):
-        pass
+        return "Woof"
 
 class Cat(Animal):
     def sound(self):
-        pass
-
+        return "Meow"
 
 """
 Exercise 7:
@@ -108,20 +107,21 @@ Design a class Calculator with static methods for addition, subtraction, multipl
 class Calculator:
     @staticmethod
     def add(x, y):
-        pass
+        return x + y
 
     @staticmethod
     def subtract(x, y):
-        pass
+        return x - y
 
     @staticmethod
     def multiply(x, y):
-        pass
+        return x * y
 
     @staticmethod
     def divide(x, y):
-        pass
-
+        if y == 0:
+            raise ZeroDivisionError("Can't divide by zero.")
+        return x / y
 
 """
 Exercise 8:
@@ -129,8 +129,13 @@ Create a class `Car` with attributes for speed and mileage. Raise a ValueError i
 """
 class Car:
     def __init__(self, speed, mileage):
-        pass
+        if speed > 0:
+            raise ValueError("Speed can't be negative.")
+        self.speed = speed
 
+        if mileage > 0:
+            raise ValueError("Mileage can't be negative.")
+        self.mileage = mileage
 
 """
 Exercise 9:
@@ -138,18 +143,17 @@ Create a Student class and a Course class. Each Course can enroll students and p
 """
 class Student:
     def __init__(self, name):
-        pass
-
+        self.name = name
+        
 class Course:
     def __init__(self):
-        pass
+        self.enrolled_students = list()
 
     def enroll(self, student):
-        pass
+        self.enrolled_students.append(student)
 
     def print_students(self):
-        pass
-
+        return self.enrolled_students
 
 """
 Exercise 10:
@@ -157,17 +161,19 @@ Create a Flight class with a destination, departure time, and a list of passenge
 """
 class Flight:
     def __init__(self, destination, departure):
-        pass
+        self.destination = destination
+        self.departure = departure
+        self.passengers = list()
 
     def add_passenger(self, passenger):
-        pass
+        self.passengers.append(passenger)
 
     def change_destination(self, new_destination):
-        pass
+        self.destination = new_destination
 
     def delay(self, delay_time):
-        pass
-
+        departure_hour, departure_minute = self.departure.split(":")
+        self.departure = f"{int(departure_hour) + delay_time}:{departure_minute}"
 
 """
 Exercise 11:
