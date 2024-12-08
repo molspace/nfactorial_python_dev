@@ -18,17 +18,19 @@ Create an Elevator class with methods to go up, go down, and get the current flo
 """
 class Elevator:
     def __init__(self):
-        pass
+        self.current_floor: int = 0
 
     def go_up(self):
-        pass
+        self.current_floor += 1
 
     def go_down(self):
-        pass
+        if self.current_floor > 0:
+            self.current_floor -= 1
+        else:
+            pass
 
     def get_current_floor(self):
-        pass
-
+        return self.current_floor
 
 """
 Exercise 3:
@@ -36,17 +38,18 @@ Create a class Stack with methods to push, pop, and check if the stack is empty.
 """
 class Stack:
     def __init__(self):
-        pass
+        self._stack = list()
 
     def push(self, item):
-        pass
+        self._stack += item
 
     def pop(self):
-        pass
+        if self.is_empty:
+            raise IndexError("Can't pop an empty stack.")
+        self._stack.pop()
 
     def is_empty(self):
-        pass
-
+        return len(self._stack) == 0
 
 """
 Exercise 4:
@@ -54,17 +57,18 @@ Design a BankAccount class with methods to deposit, withdraw, and check balance.
 """
 class BankAccount:
     def __init__(self, initial_balance):
-        pass
+        self.balance = initial_balance
 
     def deposit(self, amount):
-        pass
+        self.balance += amount
 
     def withdraw(self, amount):
-        pass
+        if self.balance < amount:
+            raise ValueError("Can't withdraw bigger than balance amount.")
+        self.balance -= amount
 
     def check_balance(self):
-        pass
-
+        return self.balance
 
 """
 Exercise 5:
@@ -72,11 +76,13 @@ Create a class Person with attributes for name and age. Implement a method birth
 """
 class Person:
     def __init__(self, name, age):
-        pass
+        self.name = name
+        self.age = age
+        if self.age < 0:
+            raise ValueError("Age can't be less than 0.")
 
     def birthday(self):
-        pass
-
+        self.age += 1
 
 """
 Exercise 6:
