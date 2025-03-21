@@ -644,7 +644,6 @@ def merge_sort(lst: List[int]) -> List[int]:
     sorted_list.extend(right[j:])
     return sorted_list
 
-
 def quick_sort(lst: List[int]) -> List[int]:
     if len(lst) <= 1:
         return lst
