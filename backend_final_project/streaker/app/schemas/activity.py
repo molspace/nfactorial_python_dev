@@ -8,9 +8,6 @@ class ActivityCreate(BaseModel):
 class UserActivityCreate(BaseModel):
     activity_id: str
 
-class UserActivityUpdate(BaseModel):
-    activity_id: str
-
 class UserActivityRead(BaseModel):
     activity_id: str
     streak: int

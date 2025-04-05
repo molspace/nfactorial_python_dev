@@ -1,7 +1,7 @@
 import uuid
 from datetime import datetime, timezone
 from sqlalchemy import Column, String, Boolean, DateTime
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy.orm import relationship
 from app.db.session import Base
 
 class User(Base):
@@ -17,3 +17,4 @@ class User(Base):
     referral_code = Column(String, unique=True, index=True, default=lambda: str(uuid.uuid4())[:8])
     referred_by = Column(String, nullable=True)
     created_at = Column(DateTime, default=datetime.now(timezone.utc))
+    activities = relationship("UserActivity", back_populates="user")

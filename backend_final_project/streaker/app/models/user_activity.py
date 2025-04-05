@@ -10,8 +10,11 @@ class UserActivity(Base):
     user_id = Column(String, ForeignKey("users.id"))
     activity_id = Column(String, ForeignKey("activities.id"))
 
-    streak = Column(Integer, default=0)
-    last_practiced = Column(Date)
-    streak_frozen = Column(Boolean, default=False)
+    streak = Column(Integer, default=0, nullable=False)
+    streak_frozen = Column(Boolean, default=False, nullable=False)
+    last_practiced = Column(Date, default=None)
+    last_completed_date = Column(Date, default=None)
+    has_freeze = Column(Boolean, default=False, nullable=False)
 
-    activity = relationship("Activity")
+    user = relationship("User", back_populates="activities")
+    activity = relationship("Activity", back_populates="user_activities")
