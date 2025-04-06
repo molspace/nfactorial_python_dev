@@ -1,22 +1,16 @@
 from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
-from app.db.session import SessionLocal
-from app.schemas.user import UserCreate, UserRead, UserLogin
+from app.schemas.user import UserCreate, UserRead, UserLogin, UserLeaderboard, UserUpdate
 from app.crud.user import get_user_by_email, create_user
 from app.core.security import hash_password, verify_password, create_access_token
 from fastapi.responses import JSONResponse
 from datetime import timedelta
 from app.core.auth import get_current_user
+from app.models.user import User
+from sqlalchemy import desc
+from app.db.session import get_db
 
 router = APIRouter()
-
-# Dependency to get the DB session
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
 
 # Signup route
 @router.post("/signup", response_model=UserRead)
@@ -36,10 +30,38 @@ def login(user: UserLogin, db: Session = Depends(get_db)):
         raise HTTPException(status_code=401, detail="Invalid credentials")
     
     # Create JWT token
-    access_token = create_access_token(data={"sub": db_user.email})
+    access_token_expires = timedelta(minutes=30)
+    access_token = create_access_token(data={"sub": db_user.email}, expires_delta=access_token_expires)
     return {"access_token": access_token, "token_type": "bearer"}
 
+# Get user profile route
 @router.get("/me", response_model=UserRead)
 def read_users_me(current_user: dict = Depends(get_current_user), db: Session = Depends(get_db)):
-    db_user = get_user_by_email(db, current_user["sub"])
+    db_user = get_user_by_email(db, current_user.email)
     return db_user
+
+# Update route
+@router.patch("/me")
+def update_user(user_data: UserUpdate, user: User = Depends(get_current_user), db: Session = Depends(get_db)):
+    db_user = get_user_by_email(db, user.email)
+    if not db_user:
+        raise HTTPException(status_code=404, detail="User not found")
+    if not user_data:
+        raise HTTPException(status_code=400, detail="No update data provided")
+    for key, value in user_data.dict(exclude_unset=True).items():
+        setattr(user, key, value)
+    db.commit()
+    db.refresh(user)
+    return {"message": "Updated successfully"}
+
+# Referrals route
+@router.get("/me/referrals", response_model=list[str])
+def get_referrals(db: Session = Depends(get_db), user=Depends(get_current_user)):
+    referrals = db.query(User).filter(User.referred_by_id == user.id).all()
+    return [r.email for r in referrals]
+
+# Leaderboard route
+@router.get("/leaderboard", response_model=list[UserLeaderboard])
+def get_leaderboard(db: Session = Depends(get_db)):
+    top_users = db.query(User).order_by(desc(User.streak)).limit(10).all()
+    return [UserLeaderboard(username=user.username, streak=int(user.streak), avatar_url=user.avatar_url) for user in top_users]

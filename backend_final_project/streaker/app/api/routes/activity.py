@@ -47,9 +47,9 @@ def record_activity(payload: UserActivityCreate, db: Session = Depends(get_db), 
         user_activity.streak += 1
     else:
         if user_activity.streak_frozen:
-            user_activity.streak_frozen = False
+            user_activity.streak_frozen = False  # Use streak freeze
         else:
-            user_activity.streak = 1
+            user_activity.streak = 1  # Restart streak
 
     user_activity.last_practiced = today
     db.commit()
@@ -87,17 +87,17 @@ def complete_activity(payload: UserActivityCreate, db: Session = Depends(get_db)
 @router.get("/progress", response_model=list[ActivityProgress])
 def get_user_progress(db: Session = Depends(get_db), user=Depends(get_current_user)):
     user_activities = db.query(UserActivity).filter(UserActivity.user_id == user.id).join(Activity).all()
-    print('HEREEEEEE', user_activities[0].has_freeze)
-    
 
     progress = []
     for user_activity in user_activities:
+        # TODO: tmp ensured has_freeze is either True or False
+        has_freeze = user_activity.has_freeze if user_activity.has_freeze is not None else False
         progress.append(ActivityProgress(
             activity_id=str(user_activity.activity_id),
             activity_name=user_activity.activity.name,
             streak=user_activity.streak,
             streak_frozen=user_activity.streak_frozen,
-            has_freeze=user_activity.has_freeze,
+            has_freeze=has_freeze,
             last_practiced=user_activity.last_practiced,
             last_completed_date=user_activity.last_completed_date,
         ))
