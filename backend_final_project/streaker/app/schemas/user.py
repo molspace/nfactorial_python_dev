@@ -19,7 +19,8 @@ class UserRead(BaseModel):
     referral_code: str
     referred_by: Optional[str]
     created_at: datetime
-    avatar_url: Optional[str] = None
+    avatar_url: str
+    avatar_path: Optional[str] = None
 
     class Config:
         orm_mode = True
@@ -31,10 +32,11 @@ class UserLogin(BaseModel):
 class UserLeaderboard(BaseModel):
     username: str
     streak: int
-    avatar_url: Optional[str] = None
+    avatar_url: str
+    avatar_path: Optional[str] = None
 
 class UserUpdate(BaseModel):
     email: EmailStr = None
     username: str = None
     password: str = None
-    avatar_url: Optional[HttpUrl] = None
+    avatar_url: str

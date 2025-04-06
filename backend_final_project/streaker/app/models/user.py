@@ -29,4 +29,9 @@ class User(Base):
     created_at = Column(DateTime, default=datetime.now(timezone.utc))
     activities = relationship("UserActivity", back_populates="user")
 
-    avatar_url = Column(String, nullable=True)
+    avatar_path = Column(String, nullable=True)
+    # default avatar if none uploaded
+    @property
+    def avatar_url(self):
+        # TODO: set a proper default avatar path
+        return self.avatar_path or "https://example.com/default-avatar.png"
