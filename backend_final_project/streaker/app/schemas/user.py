@@ -23,7 +23,7 @@ class UserRead(BaseModel):
     avatar_path: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class UserLogin(BaseModel):
     email: EmailStr

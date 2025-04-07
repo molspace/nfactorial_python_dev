@@ -15,7 +15,7 @@ dependencies = [
     "pydantic (>=2.11.2,<3.0.0)",
     "python-dotenv (>=1.1.0,<2.0.0)",
     "python-jose (>=3.4.0,<4.0.0)",
-    "passlib (>=1.7.4,<2.0.0)"
+    "passlib (>=1.7.4,<2.0.0)",
 ]
 
 [tool.poetry]
@@ -25,6 +25,9 @@ packages = [{include = "streaker", from = "src"}]
 [tool.poetry.group.dev.dependencies]
 black = "^25.1.0"
 isort = "^6.0.1"
+pytest = "^8.3.5"
+pytest-cov = "^6.1.1"
+requests = "^2.32.3"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
