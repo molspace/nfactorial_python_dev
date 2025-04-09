@@ -1,4 +1,4 @@
-![tests passed](https://github.com/molspace/nfactorial_python_dev/tree/main/hw_backend2/cars/cars_tests.png)
+![tests passed](https://github.com/molspace/nfactorial_python_dev/blob/main/hw_backend2/cars/cars_tests.png)
 
 # cars
 
