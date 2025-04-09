@@ -40,7 +40,6 @@ drwxr-xr-x     3 tengri  staff      96 Jan 29  2024 .virtual_documents
 drwxr-xr-x     4 tengri  staff     128 Feb 10  2023 .vscode
 -rw-r--r--     1 tengri  staff     249 Oct 10  2023 .wget-hsts
 -rw-r--r--     1 tengri  staff     603 Dec 28  2022 .xonshrc
--rw-r--r--     1 tengri  staff   49741 Sep 23 13:13 .zcompdump-Nurlybek’s MacBook Pro-5.9
 -rw-r--r--     1 tengri  staff    5848 Jan 27  2024 .zprofile
 -rw-------     1 tengri  staff   52696 Sep 28 14:24 .zsh_history
 drwx------     4 tengri  staff     128 Aug 24 22:40 .zsh_sessions
@@ -50,7 +49,6 @@ drwx------     4 tengri  staff     128 Aug 24 22:40 .zsh_sessions
 drwx------+   62 tengri  staff    1984 Sep 28 14:17 Desktop
 drwx------@   24 tengri  staff     768 Sep 28 14:16 Documents
 drwx------@  410 tengri  staff   13120 Sep 28 14:14 Downloads
-lrwxr-xr-x     1 tengri  staff      42 Jul  2  2023 Dropbox -> /Users/tengri/Library/CloudStorage/Dropbox
 drwx------+  110 tengri  staff    3520 Sep 14 12:02 Library
 drwx------     5 tengri  staff     160 Sep  2  2023 Movies
 drwx------+    6 tengri  staff     192 Dec 26  2022 Music
@@ -60,4 +58,3 @@ drwxr-xr-x+    5 tengri  staff     160 Sep  2  2023 Public
 drwxr-xr-x    40 tengri  staff    1280 Jan 27  2024 fonts
 drwxr-xr-x     3 tengri  staff      96 Oct 14  2023 nltk_data
 drwxr-xr-x     4 tengri  staff     128 Aug  7  2023 opt
-drwxr-xr-x    17 tengri  staff     544 Feb  9  2024 tg_search

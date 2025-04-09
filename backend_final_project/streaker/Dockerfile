@@ -25,5 +25,4 @@ EXPOSE 80
 
 # 7. auto-run Alembic migrations in the container
 # Default command – runs uvicorn via Poetry to start the FastAPI app
-CMD ["poetry", "run", "alembic", "upgrade", "head"] \
-  && ["poetry", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["/bin/sh", "-c", "poetry run alembic upgrade head && poetry run uvicorn app.main:app --host 0.0.0.0 --port 80"]

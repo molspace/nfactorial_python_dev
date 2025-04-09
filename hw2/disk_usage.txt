@@ -28,7 +28,6 @@
  24K	.DS_Store
  32K	.jupyter
  32K	.python_history
- 52K	.zcompdump-Nurlybek’s MacBook Pro-5.9
 132K	.zsh_history
 320K	.matplotlib
 748K	.config

@@ -14,6 +14,7 @@ engine = create_engine(
 )
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
+# Dependency to get the DB session
 def get_db():
     db = SessionLocal()
     try:

@@ -169,6 +169,7 @@ def exercise21(s):
     print("Exercise 21: Complete")
     return is_palindrome
 
+# TODO: для exercise22 можно было использовать sorted().
 def exercise22(str1, str2):
     print("Exercise 22: check-anagrams: Start")
     print(f'Input: {str1}, {str2}')

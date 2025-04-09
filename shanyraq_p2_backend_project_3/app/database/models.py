@@ -3,8 +3,6 @@ from sqlalchemy.orm import relationship
 from .database import Base
 import datetime
 
-# models.py
-
 favorite_listings = Table(
     "favorite_listings",
     Base.metadata,
