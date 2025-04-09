@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Пользователь</title>
+  </head>
+  <body>
+    <!-- (сюда писать решение) -->
+    
+    <h1>Пользователь</h1>
+    <ul>
+      <li><strong>id:</strong> {{ user.id }}</li>
+      <li><strong>email:</strong> {{ user.email }}</li>
+      <li><strong>first_name:</strong> {{ user.first_name }}</li>
+      <li><strong>last_names:</strong> {{ user.last_name }}</li>
+      <li><strong>username:</strong> {{ user.username }}</li>
+      <!-- full name is neede to pass tests however it is not in the model -->
+      <li><strong>fullname:</strong> {{ user.first_name }} {{ user.last_name }}</li>
+    </ul>
+    <a href="/users">Назад к пользователям</a>
+
+    <!-- (конец решения) -->
+  </body>
+</html>
