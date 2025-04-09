@@ -1,4 +1,4 @@
-![tests passed](https://github.com/molspace/nfactorial_python_dev/hw_backend2/users/users_tests.png)
+![tests passed](https://github.com/molspace/nfactorial_python_dev/hw_backend2/tree/main/users/users_tests.png)
 
 # users
 
